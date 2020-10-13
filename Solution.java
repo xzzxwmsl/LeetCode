@@ -1,45 +1,40 @@
 public class Solution {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(3);
+        ListNode head = new ListNode(1);
         ListNode p1 = new ListNode(2);
-        ListNode p2 = new ListNode(0);
-        ListNode p3 = new ListNode(-4);
+        ListNode p2 = new ListNode(3);
+        ListNode p3 = new ListNode(4);
+        ListNode p4 = new ListNode(5);
         head.add(p1);
         p1.add(p2);
         p2.add(p3);
-        p3.add(p1);
-
-        System.out.println(detectCycle(head).val);
+        p3.add(p4);
+        visitList(swapPairs(head));
 
     }
 
-    public static ListNode detectCycle(ListNode head) {
-        if (head == null || head.next == null)
-            return null;
-        // 先判断是否有环
-        ListNode p1 = head, p2 = head;
-        boolean isCycle = false;
-        while (p2.next != null && p2.next.next != null) {
-            p1 = p1.next;
-            p2 = p2.next.next;
-            if (p1 == p2) {
-                isCycle = true;
-                break;
-            }
+    public static ListNode swapPairs(ListNode head) {
+        ListNode newHead = new ListNode(0);
+        newHead.next = head;
+        ListNode p = newHead;
+        while (p.next != null && p.next.next != null) {
+            ListNode p1 = p.next;
+            ListNode p2 = p.next.next;
+            p.next = p2;
+            p1.next = p2.next;
+            p2.next = p1;
+            p = p1;
         }
+        return newHead.next;
+    }
 
-        // 有环
-        if (isCycle) {
-            ListNode ptr = head;
-            while (ptr != p1) {
-                ptr = ptr.next;
-                p1 = p1.next;
-            }
-            return ptr;
-        } else {
-            return null;
+    public static void visitList(ListNode listNode) {
+        while (listNode != null) {
+            System.out.printf("%d ", listNode.val);
+            listNode = listNode.next;
         }
+        System.out.println();
     }
 }
 
