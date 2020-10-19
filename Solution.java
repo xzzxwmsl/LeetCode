@@ -11,49 +11,35 @@ public class Solution {
         // p2.add(p3);
         // p3.add(p4);
         // visitList(swapPairs(head));
-        String[] s = new String[]{"","flow","flight"};
-        System.out.println(fun(s));
+        String S = "a##b#cd";
+        String T = "cc#d";
+        System.out.println(backspaceCompare(S, T));
 
     }
 
-    public static ListNode swapPairs(ListNode head) {
-        ListNode newHead = new ListNode(0);
-        newHead.next = head;
-        ListNode p = newHead;
-        while (p.next != null && p.next.next != null) {
-            ListNode p1 = p.next;
-            ListNode p2 = p.next.next;
-            p.next = p2;
-            p1.next = p2.next;
-            p2.next = p1;
-            p = p1;
-        }
-        return newHead.next;
-    }
-
-    public static String fun(String[] strs) {
-        StringBuilder re = new StringBuilder();
-
-        try {
-            int flag = 0;
-            boolean over = false;
-            while (true) {
-                char c = strs[0].charAt(flag);
-                for (String s : strs) {
-                    if (c != s.charAt(flag)) {
-                        over = true;
-                        break;
-                    }
-                }
-                if(over) break;
-                flag++;
-                re.append(c);
+    public static boolean backspaceCompare(String S, String T) {
+        StringBuilder s1 = new StringBuilder();
+        StringBuilder s2 = new StringBuilder();
+        for (int i = 0; i < S.length(); i++) {
+            char c = S.charAt(i);
+            if (c == '#' && s1.length() != 0) {
+                s1.deleteCharAt(s1.length() - 1);
+            } else if (c != '#') {
+                s1.append(c);
             }
-        } catch (Exception e) {
-
         }
 
-        return re.toString();
+        for (int i = 0; i < T.length(); i++) {
+            char c = T.charAt(i);
+            if (c == '#' && s2.length() != 0) {
+                s2.deleteCharAt(s2.length() - 1);
+            } else if (c != '#') {
+                s2.append(c);
+            }
+        }
+
+        System.out.println(s1.toString() + ' ' + s2.toString());
+        return s1.toString().equals(s2.toString());
     }
 
     public static void visitList(ListNode listNode) {
