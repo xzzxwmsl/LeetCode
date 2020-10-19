@@ -13,33 +13,30 @@ public class Solution {
         // visitList(swapPairs(head));
         String S = "a##b#cd";
         String T = "cc#d";
-        System.out.println(backspaceCompare(S, T));
+        System.out.println(plt(7));
+        System.out.println(fun(7));
 
     }
 
-    public static boolean backspaceCompare(String S, String T) {
-        StringBuilder s1 = new StringBuilder();
-        StringBuilder s2 = new StringBuilder();
-        for (int i = 0; i < S.length(); i++) {
-            char c = S.charAt(i);
-            if (c == '#' && s1.length() != 0) {
-                s1.deleteCharAt(s1.length() - 1);
-            } else if (c != '#') {
-                s1.append(c);
-            }
+    public static int plt(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
         }
+        return plt(n - 1) + plt(n - 2);
+    }
 
-        for (int i = 0; i < T.length(); i++) {
-            char c = T.charAt(i);
-            if (c == '#' && s2.length() != 0) {
-                s2.deleteCharAt(s2.length() - 1);
-            } else if (c != '#') {
-                s2.append(c);
-            }
+    public static int fun(int n) {
+        int result = 1;
+        int p = 0, q = 0;
+        // p作用是临时保存
+        // q是f(x-1)
+        // r是f(x)
+        for (int i = 1; i <= n; i++) {
+            p = q;
+            q = result;
+            result = p + q;
         }
-
-        System.out.println(s1.toString() + ' ' + s2.toString());
-        return s1.toString().equals(s2.toString());
+        return result;
     }
 
     public static void visitList(ListNode listNode) {
