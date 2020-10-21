@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,34 +15,31 @@ public class Solution {
         // visitList(swapPairs(head));
         String S = "a##b#cd";
         String T = "cc#d";
-
-        System.out.println(fun("pyplrza", "ppyypllrzzak"));
+        // System.out.println(fun("pyplrza", "ppyypllrzzak"));
 
     }
 
-    public static boolean fun(String name, String typed) {
-        int namePos = 0;
-        int typedPos = 0;
-        boolean flag = true;
-        while (namePos < name.length()) {
-            char c = name.charAt(namePos);
-            int numberOfChar = 0, numberOfChar2 = 0;
-            for (; namePos < name.length(); namePos++) {
-                if (c != name.charAt(namePos))
+    public static int evalRPN(String[] tokens) {
+        Stack<Integer> stack = new Stack<>();
+        for (String s : tokens) {
+            switch (s) {
+                case "+":
+                    stack.push(stack.pop() + stack.pop());
                     break;
-                numberOfChar++;
-            }
-            for (; typedPos < typed.length(); typedPos++) {
-                if (c != typed.charAt(typedPos))
+                case "-":
+                    int i = stack.pop();
+                    stack.push(stack.pop() - i);
+                case "*":
+                    stack.push(stack.pop() * stack.pop());
                     break;
-                numberOfChar2++;
-            }
-            if (numberOfChar2 < numberOfChar) {
-                flag = false;
-                break;
+                case "/":
+                    int j = stack.pop();
+                    stack.push(stack.pop() - j);
+                default:
+                    stack.push(Integer.parseInt(s));
             }
         }
-        return typedPos == typed.length() ? flag : false;
+        return stack.pop();
     }
 
     public static void visitList(ListNode listNode) {
