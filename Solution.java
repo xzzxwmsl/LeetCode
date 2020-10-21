@@ -13,30 +13,34 @@ public class Solution {
         // visitList(swapPairs(head));
         String S = "a##b#cd";
         String T = "cc#d";
-        System.out.println(plt(7));
-        System.out.println(fun(7));
+
+        System.out.println(fun("pyplrza", "ppyypllrzzak"));
 
     }
 
-    public static int plt(int n) {
-        if (n == 0 || n == 1) {
-            return 1;
+    public static boolean fun(String name, String typed) {
+        int namePos = 0;
+        int typedPos = 0;
+        boolean flag = true;
+        while (namePos < name.length()) {
+            char c = name.charAt(namePos);
+            int numberOfChar = 0, numberOfChar2 = 0;
+            for (; namePos < name.length(); namePos++) {
+                if (c != name.charAt(namePos))
+                    break;
+                numberOfChar++;
+            }
+            for (; typedPos < typed.length(); typedPos++) {
+                if (c != typed.charAt(typedPos))
+                    break;
+                numberOfChar2++;
+            }
+            if (numberOfChar2 < numberOfChar) {
+                flag = false;
+                break;
+            }
         }
-        return plt(n - 1) + plt(n - 2);
-    }
-
-    public static int fun(int n) {
-        int result = 1;
-        int p = 0, q = 0;
-        // p作用是临时保存
-        // q是f(x-1)
-        // r是f(x)
-        for (int i = 1; i <= n; i++) {
-            p = q;
-            q = result;
-            result = p + q;
-        }
-        return result;
+        return typedPos == typed.length() ? flag : false;
     }
 
     public static void visitList(ListNode listNode) {
