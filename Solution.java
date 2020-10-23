@@ -3,43 +3,51 @@ import java.util.Stack;
 public class Solution {
 
     public static void main(String[] args) {
-        // ListNode head = new ListNode(1);
-        // ListNode p1 = new ListNode(2);
-        // ListNode p2 = new ListNode(3);
-        // ListNode p3 = new ListNode(4);
-        // ListNode p4 = new ListNode(5);
-        // head.add(p1);
+        ListNode head = new ListNode(1);
+        ListNode p1 = new ListNode(0);
+        ListNode p2 = new ListNode(3);
+        ListNode p3 = new ListNode(1);
+        ListNode p4 = new ListNode(2);
+        ListNode p5 = new ListNode(1);
+        head.add(p1);
         // p1.add(p2);
         // p2.add(p3);
-        // p3.add(p4);
-        // visitList(swapPairs(head));
-        String S = "a##b#cd";
-        String T = "cc#d";
+        System.out.println(isPalindrome(head));
         // System.out.println(fun("pyplrza", "ppyypllrzzak"));
 
     }
 
-    public static int evalRPN(String[] tokens) {
-        Stack<Integer> stack = new Stack<>();
-        for (String s : tokens) {
-            switch (s) {
-                case "+":
-                    stack.push(stack.pop() + stack.pop());
-                    break;
-                case "-":
-                    int i = stack.pop();
-                    stack.push(stack.pop() - i);
-                case "*":
-                    stack.push(stack.pop() * stack.pop());
-                    break;
-                case "/":
-                    int j = stack.pop();
-                    stack.push(stack.pop() - j);
-                default:
-                    stack.push(Integer.parseInt(s));
-            }
+    public static boolean isPalindrome(ListNode head) {
+        if (head == null)
+            return false;
+        ListNode slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        return stack.pop();
+        // 找到中间指针以及尾指针
+
+        // 反转链表
+        fast = reserveList(fast);
+        while (head.next!=null) {
+            if (fast.val != head.val)
+                return false;
+            fast = fast.next;
+            head = head.next;
+        }
+
+        return true;
+    }
+
+    public static ListNode reserveList(ListNode head) {
+        ListNode cur = head, pre = null;
+        while (cur != null) {
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
     }
 
     public static void visitList(ListNode listNode) {
