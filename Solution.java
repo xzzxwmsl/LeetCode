@@ -14,7 +14,6 @@ public class Solution {
         // p2.add(p3);
         System.out.println(isPalindrome(head));
         // System.out.println(fun("pyplrza", "ppyypllrzzak"));
-
     }
 
     public static boolean isPalindrome(ListNode head) {
