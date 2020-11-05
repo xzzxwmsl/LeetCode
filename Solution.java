@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 public class Solution {
@@ -15,6 +19,9 @@ public class Solution {
         // System.out.println(isPalindrome(head));
         // System.out.println(fun("pyplrza", "ppyypllrzzak"));
         System.out.println(validMountainArray(new int[] { 1,6,3 }));
+        Set<Integer> set = new HashSet<>();
+        
+        
     }
 
     public static boolean validMountainArray(int[] A) {
