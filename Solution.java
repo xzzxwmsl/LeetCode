@@ -7,21 +7,44 @@ import java.util.Stack;
 public class Solution {
 
     public static void main(String[] args) {
-        // ListNode head = new ListNode(1);
-        // ListNode p1 = new ListNode(0);
-        // ListNode p2 = new ListNode(3);
-        // ListNode p3 = new ListNode(1);
-        // ListNode p4 = new ListNode(2);
-        // ListNode p5 = new ListNode(1);
-        // head.add(p1);
-        // // p1.add(p2);
-        // // p2.add(p3);
+        ListNode head = new ListNode(6);
+        ListNode p1 = new ListNode(6);
+        ListNode p2 = new ListNode(6);
+        ListNode p3 = new ListNode(6);
+        ListNode p4 = new ListNode(6);
+        ListNode p5 = new ListNode(6);
+        ListNode p6 = new ListNode(6);
+        head.add(p1);
+        p1.add(p2);
+        p2.add(p3);
+        p3.add(p4);
+        p4.add(p5);
+        p5.add(p6);
+
+        visitList(removeElements(head, 6));
+        // p1.add(p2);
+        // p2.add(p3);
         // System.out.println(isPalindrome(head));
         // System.out.println(fun("pyplrza", "ppyypllrzzak"));
-        System.out.println(validMountainArray(new int[] { 1,6,3 }));
-        Set<Integer> set = new HashSet<>();
-        
-        
+
+    }
+
+    public static ListNode removeElements(ListNode head, int val) {
+        // if(head == null) return head;
+        ListNode pre = new ListNode(-1); // 新建一个头节点
+        pre.next = head;
+        ListNode result = pre;
+
+        while (head != null) {
+            if (head.val == val) {
+                pre.next = head.next;
+            }else{
+                pre = pre.next;
+            }
+            head = pre.next;
+        }
+
+        return result.next;
     }
 
     public static boolean validMountainArray(int[] A) {
