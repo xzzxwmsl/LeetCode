@@ -7,26 +7,28 @@ import java.util.Stack;
 public class Solution {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(6);
-        ListNode p1 = new ListNode(6);
-        ListNode p2 = new ListNode(6);
-        ListNode p3 = new ListNode(6);
-        ListNode p4 = new ListNode(6);
-        ListNode p5 = new ListNode(6);
-        ListNode p6 = new ListNode(6);
-        head.add(p1);
-        p1.add(p2);
-        p2.add(p3);
-        p3.add(p4);
-        p4.add(p5);
-        p5.add(p6);
+        // ListNode head = new ListNode(6);
+        // ListNode p1 = new ListNode(6);
+        // ListNode p2 = new ListNode(6);
+        // ListNode p3 = new ListNode(6);
+        // ListNode p4 = new ListNode(6);
+        // ListNode p5 = new ListNode(6);
+        // ListNode p6 = new ListNode(6);
+        // head.add(p1);
+        // p1.add(p2);
+        // p2.add(p3);
+        // p3.add(p4);
+        // p4.add(p5);
+        // p5.add(p6);
 
-        visitList(removeElements(head, 6));
+        // visitList(removeElements(head, 6));
         // p1.add(p2);
         // p2.add(p3);
         // System.out.println(isPalindrome(head));
         // System.out.println(fun("pyplrza", "ppyypllrzzak"));
-
+        int[] a;
+        a = new int[3];
+        System.out.println(a.length);
     }
 
     public static ListNode removeElements(ListNode head, int val) {
