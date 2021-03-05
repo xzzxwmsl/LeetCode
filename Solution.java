@@ -26,9 +26,8 @@ public class Solution {
         // p2.add(p3);
         // System.out.println(isPalindrome(head));
         // System.out.println(fun("pyplrza", "ppyypllrzzak"));
-        int[] a;
-        a = new int[3];
-        System.out.println(a.length);
+        Stack<Integer> a;
+        a = new Stack<>();
     }
 
     public static ListNode removeElements(ListNode head, int val) {
