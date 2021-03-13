@@ -26,6 +26,7 @@ public class Solution {
         // p2.add(p3);
         // System.out.println(isPalindrome(head));
         // System.out.println(fun("pyplrza", "ppyypllrzzak"));
+        // System.out.println((7+1)<<1);
     }
 
     public static ListNode removeElements(ListNode head, int val) {
